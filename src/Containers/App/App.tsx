@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import Modal from '../../Components/Modal/Modal';
 import Alert from "../../Components/Alert/Alert";
+import Btns from "../../Components/Btns/Btns";
 
 function App() {
   const [showModal, setShowModal] = useState(false);
@@ -8,6 +9,22 @@ function App() {
 
   const [showAlert, setShowAlert] = useState(false);
   const closeAlert = () => {setShowAlert(false)};
+  const onContinue = () =>{setShowAlert(true)
+  setShowModal(false)};
+
+  const [btns, setBtns] = useState([
+    {type: 'primary', label: 'Continue', onClick: onContinue},
+    {type: 'danger', label: 'Close', onClick: cancel}
+  ])
+
+  const btnsList: React.ReactNode = btns.map((btn) => (
+    <Btns
+      type={btn.type}
+      label={btn.label}
+      onClose={cancel}
+      onContinue={onContinue}
+    />
+  ))
 
   return (
       <>
@@ -22,12 +39,7 @@ function App() {
               Content
             </div>
             <div className="modal-footer">
-              <button
-                className="btn btn-danger"
-                onClick={cancel}
-              >
-                Cancel
-              </button>
+              {btnsList}
             </div>
           </Modal>
           <Alert type="danger"
