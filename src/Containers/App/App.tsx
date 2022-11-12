@@ -16,7 +16,7 @@ function App() {
             <span className="navbar-brand">UI Elements</span>
           </div>
         </div>
-        <div style={{marginTop: '30px', marginLeft: '20px'}}>
+        <div style={{margin: '30px 20px'}}>
           <Modal onClose={cancel} show={showModal} title="My modal">
             <div className="modal-body">
               Content
@@ -30,9 +30,34 @@ function App() {
               </button>
             </div>
           </Modal>
-          <Alert onDismiss={closeAlert} show={showAlert}/>
-          <button className="btn btn-primary" onClick={() => setShowModal(true)}>Show modal</button>
-          <button className="btn btn-success ms-4" onClick={() => setShowAlert(true)}>Show success alert</button>
+          <Alert type="danger"
+                 onDismiss={closeAlert}
+                 show={showAlert}>
+            This is a danger type alert
+          </Alert>
+
+          <Alert type="success"
+                 onDismiss={closeAlert}
+                 show={showAlert}>
+            This is a success type alert
+          </Alert>
+
+          <Alert type="primary"
+                 show={showAlert}>
+            This is a primary type alert
+          </Alert>
+
+          <button
+            className="btn btn-primary"
+            onClick={() => setShowModal(true)}
+          >Show modal
+          </button>
+
+          <button
+            className="btn btn-success ms-4"
+            onClick={() => setShowAlert(true)}
+          >Show alerts
+          </button>
         </div>
 
 
