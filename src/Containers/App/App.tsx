@@ -2,6 +2,9 @@ import React, {useState} from 'react';
 import Modal from '../../Components/Modal/Modal';
 import Alert from "../../Components/Alert/Alert";
 import Btns from "../../Components/Btns/Btns";
+import { CSSTransition } from "react-transition-group";
+import "./Transition.css";
+
 
 function App() {
   const [showModal, setShowModal] = useState(false);
@@ -34,30 +37,48 @@ function App() {
           </div>
         </div>
         <div style={{margin: '30px 20px'}}>
-          <Modal onClose={cancel} show={showModal} title="My modal">
-            <div className="modal-body">
-              Content
+          <CSSTransition
+          in={showModal}
+          timeout={1500}
+          classNames="modal-cont"
+          >
+            <div>
+              <Modal onClose={cancel} show={showModal} title="My modal">
+                <div className="modal-body">
+                  Content
+                </div>
+                <div className="modal-footer">
+                  {btnsList}
+                </div>
+              </Modal>
             </div>
-            <div className="modal-footer">
-              {btnsList}
-            </div>
-          </Modal>
-          <Alert type="danger"
-                 onDismiss={closeAlert}
-                 show={showAlert}>
-            This is a danger type alert
-          </Alert>
+          </CSSTransition>
 
-          <Alert type="success"
-                 onDismiss={closeAlert}
-                 show={showAlert}>
-            This is a success type alert
-          </Alert>
+          <CSSTransition
+          in={showAlert}
+          timeout={1000}
+          classNames="alert-cont"
+          >
+              <div>
+                <Alert type="danger"
+                       onDismiss={closeAlert}
+                       show={showAlert}>
+                  This is a danger type alert
+                </Alert>
 
-          <Alert type="primary"
-                 show={showAlert}>
-            This is a primary type alert
-          </Alert>
+                <Alert type="success"
+                       onDismiss={closeAlert}
+                       show={showAlert}>
+                  This is a success type alert
+                </Alert>
+
+                <Alert type="primary"
+                       show={showAlert}>
+                  This is a primary type alert
+                </Alert>
+              </div>
+
+          </CSSTransition>
 
           <button
             className="btn btn-primary"
@@ -72,9 +93,7 @@ function App() {
           </button>
         </div>
 
-
       </>
-
   );
 }
 

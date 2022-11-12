@@ -1,0 +1,51 @@
+.modal-cont-enter {
+    opacity: 0;
+}
+
+.modal-cont-enter-active{
+    opacity: 1;
+    transition: opacity 1500ms;
+}
+
+.modal-cont-enter-done {
+    opacity: 1;
+}
+
+.modal-cont-exit{
+    opacity: 1;
+}
+
+.modal-cont-exit-active{
+    opacity: 0;
+    transition: opacity 1500ms;
+}
+
+.modal-cont-exit-done{
+    opacity: 0;
+}
+
+.alert-cont-enter {
+    opacity: 0;
+}
+
+.alert-cont-enter-active{
+    opacity: 1;
+    transition: opacity 1500ms;
+}
+
+.alert-cont-enter-done {
+    opacity: 1;
+}
+
+.alert-cont-exit {
+    opacity: 1;
+}
+
+.alert-cont-exit-active{
+    opacity: 0;
+    transition: opacity 1500ms;
+}
+
+.alert-cont-exit-done {
+    opacity: 0;
+}
